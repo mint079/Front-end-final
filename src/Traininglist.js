@@ -59,50 +59,62 @@ class Traininglist extends Component {
     }
 
   render() {
- 
-        return (
-        <div className="App-body">
-        <div className="row">
+    if(this.state.training.length < 1 )
+      return( 
+        <div className='Container'>
+            <h2>Waitttttt!!</h2>
+        </div>)
+        else if(this.state.training[0].rel===null)
+        return(
+          <div className="row">
             <AddTraining addTraining={this.addTraining} loadTraining={()=>this.loadTraining(this.props.link)} idlink ={this.props.link}/>
             </div>
-            <ReactTable data={this.state.training}
-            columns={[
-                {
-                columns: [
-                    {
-                    Header: "date",
-                    id:"date",
-                    accessor: d=> { 
-                        var a= new Date(d.date);
-                            return a.getFullYear() +"-"+a.getMonth()+"-" +a.getDate();
-                        }
-                    },  
-                    {
-                    Header: "Duration",
-                    accessor: "duration",
-                    },
-                    {
-                    Header: "Activity",
-                    accessor: "activity",
-                    },                        
-                    {
-                    id: 'button',
-                    sortable: false,
-                    filterable: false,
-                    width: 100,
-                    accessor: 'links[0].href',
-                    Cell: ({value}) => (<button className="btn btn-default btn-link" onClick={()=>{this.delTraining(value)}}>Delete</button>)
-                    }              
-                ]
-                }
-            ]}
-            filterable
-            className="-highlight" 
-            defaultPageSize={4}> 
-            </ReactTable>
-            <ToastContainer autoClose={2000}/>
-        </div>
-        );
+        )
+        else{
+          return (
+          <div className="App-body">
+          <div className="row">
+              <AddTraining addTraining={this.addTraining} loadTraining={()=>this.loadTraining(this.props.link)} idlink ={this.props.link}/>
+              </div>
+              <ReactTable data={this.state.training}
+              columns={[
+                  {
+                  columns: [
+                      {
+                      Header: "date",
+                      id:"date",
+                      accessor: d=> { 
+                          var a= new Date(d.date);
+                              return a.getFullYear() +"-"+a.getMonth()+"-" +a.getDate();
+                          }
+                      },  
+                      {
+                      Header: "Duration",
+                      accessor: "duration",
+                      },
+                      {
+                      Header: "Activity",
+                      accessor: "activity",
+                      },                        
+                      {
+                      id: 'button',
+                      sortable: false,
+                      filterable: false,
+                      width: 100,
+                      accessor: 'links[0].href',
+                      Cell: ({value}) => (<button className="btn btn-default btn-link" onClick={()=>{this.delTraining(value)}}>Delete</button>)
+                      }              
+                  ]
+                  }
+              ]}
+              filterable
+              className="-highlight" 
+              defaultPageSize={4}> 
+              </ReactTable>
+              <ToastContainer autoClose={2000}/>
+          </div>
+          );
+        }
     }
   
 }
