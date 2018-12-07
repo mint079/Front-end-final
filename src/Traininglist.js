@@ -15,7 +15,8 @@ class Traininglist extends Component {
   
   // Load cars from REST API
   loadTraining = (link) => {
-    fetch(link)
+    var traininglink = link+'/trainings';
+    fetch(traininglink)
     .then((response) => response.json()) 
     .then((responseData) => { 
       this.setState({ 
@@ -44,24 +45,21 @@ class Traininglist extends Component {
   }
 
   
-  addTraining(training) {
-    fetch('https://customerrest.herokuapp.com/api/trainings', 
-    {   method: 'POST', 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(training)
-    })
-    .then(res => this.loadTraining(this.props.link))
-    .catch(err => console.error(err))
-  }
+  addTraining = (training) => {
+    fetch('https://customerrest.herokuapp.com/api/trainings',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(training)
+            })
+            .then(re => console.log(this.loadTraining(this.props.link)))
+            .catch(er => console.log(er));
+    }
 
   render() {
-    if (this.state.training[0].rel === null)
-    return ( <div className="row">
-    <AddTraining addTraining={this.addTraining} loadTraining={()=>this.loadTraining(this.props.link)} idlink ={this.props.link}/>)
-    </div>)
-    else {
+ 
         return (
         <div className="App-body">
         <div className="row">
@@ -99,13 +97,14 @@ class Traininglist extends Component {
                 }
             ]}
             filterable
-            className="-highlight" > 
+            className="-highlight" 
+            defaultPageSize={4}> 
             </ReactTable>
             <ToastContainer autoClose={2000}/>
         </div>
         );
     }
-  }
+  
 }
 
 export default Traininglist;

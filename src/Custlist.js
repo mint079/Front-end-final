@@ -157,7 +157,7 @@ class Custlist extends Component {
           SubComponent={
             row => {
                 return (
-                    <Traininglist link={this.state.cust[row.index].links[2].href} />
+                    <Traininglist link={this.state.cust[row.index].links[0].href} />
                 );
             }
         }> 

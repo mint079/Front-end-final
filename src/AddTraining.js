@@ -4,7 +4,7 @@ import SkyLight from 'react-skylight';
 class AddTraining extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {date:'',  activity: '', duration: '',}
+      this.state = {date:'',  activity: '', duration: ''}
   };
 
   handleChange = (event) => {
@@ -15,7 +15,7 @@ class AddTraining extends React.Component {
   
   submitTraining = (event) => {
       event.preventDefault();
-      var newTraining={date: this.state.date, activity: this.state.activity, duration: this.duration, cust:this.props.idlink};
+      var newTraining={date: this.state.date, activity: this.state.activity, duration: this.state.duration, customer:this.props.idlink};
       this.props.addTraining(newTraining);    
       this.props.loadTraining();
       this.refs.simpleDialog.hide();    
@@ -46,7 +46,7 @@ class AddTraining extends React.Component {
                         <input type="number" placeholder="duration" className="form-control" name="duration" onChange={this.handleChange} min="0"/>
                     </div>
                     <div className="form-group">
-                        <button className="btn btn-primary" onClick={this.submitTraining}>Save</button>   
+                        <button className="btn btn-primary" onClick={(e)=>this.submitTraining(e)}>Save</button>   
                     </div>       
                 </form>
                 </div>      
