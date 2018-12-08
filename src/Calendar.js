@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import 'moment/locale/nb';
 
 
@@ -9,7 +8,6 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = BigCalendar.momentLocalizer(moment);
-const DnDCalendar = withDragAndDrop(BigCalendar);
 class Calendar extends Component {
     state = {
       events:[],
@@ -29,7 +27,9 @@ class Calendar extends Component {
                     a.title = data.firstname+ ' ' + data.lastname +': ' +trainingList.activity;
                     a.start = new Date(trainingList.date);
                     a.end = new Date(trainingList.date);
-                    a.links = trainingList.links;
+                    a.resource = trainingList.links;
+                    a.allDay =true;
+                    
 
                 })
                 .catch(er => console.log(er));
@@ -46,7 +46,7 @@ class Calendar extends Component {
       return (
         <div className="Container">
             <div>
-                <DnDCalendar
+                <BigCalendar
                 localizer={localizer}
                 defaultDate={new Date()}
                 defaultView="month"

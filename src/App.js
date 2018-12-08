@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Custlist from './Custlist';
-import Date from './Calendar';
+import Calendar from './Calendar';
 import Home from './Home';
 import Navigator from'./Navigator';
 import { BrowserRouter as Router, Route, Switch,Redirect} from "react-router-dom";
@@ -44,10 +44,10 @@ class App extends Component {
         <div>
           <Navigator isAuthenticated={this.state.isAuthenticated}/>
             <Switch>
-              <Route path="/login" component={Login} />
               <Route exact path="/" component={Home} />
-              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/customers" component={() => <Custlist/>} />
-              <Route path='/calendar' render={() => <Date />} />
+              <Route path="/login" render={() => <Login />} />
+              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/customers" component={() => <Custlist />} />
+              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/calendar" component={() => <Calendar />} />
               <Route render={() => <h1>Page not found</h1>} />           
             </Switch>
         </div>

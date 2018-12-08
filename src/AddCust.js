@@ -24,18 +24,18 @@ class AddCust extends React.Component {
   
   render() {
     // Add car page doesn't fit to default size modal
-    const addCarDialog = {
+    const addCustDialog = {
       width: '70%',
-      height: '450px',
+      height: '500px',
       marginTop: '-300px',
       marginLeft: '-35%',
     };
 
     return (
       <div>
-        <SkyLight dialogStyles={addCarDialog} hideOnOverlayClicked ref="simpleDialog">
+        <SkyLight dialogStyles={addCustDialog} hideOnOverlayClicked ref="simpleDialog">
               <div className="card" style={{"width": "95%"}}>
-              <div className="card-body">
+              <div className="card-body" style={{"height": "90%"}}>
               <h5 className="card-title">New customer</h5>
               <form>
                   <div className="form-group">       
