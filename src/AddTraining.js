@@ -28,7 +28,7 @@ class AddTraining extends React.Component {
       marginTop: '-300px',
       marginLeft: '-35%',
     };
-
+    
     return (
         <div>
           <SkyLight dialogStyles={addTrainingDialog} hideOnOverlayClicked ref="simpleDialog">

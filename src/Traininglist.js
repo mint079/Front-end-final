@@ -118,5 +118,4 @@ class Traininglist extends Component {
     }
   
 }
-
 export default Traininglist;
