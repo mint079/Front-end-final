@@ -29,7 +29,7 @@ class App extends Component {
   }
   componentDidMount() {
     firebaseAuth().onAuthStateChanged((user) => {
-      if (user && user.emailVerified) {
+      if (user ) {
         this.setState({ user: user, isAuthenticated: true });      
       } 
       else {

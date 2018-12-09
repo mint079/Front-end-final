@@ -26,7 +26,7 @@ class AddCust extends React.Component {
     // Add car page doesn't fit to default size modal
     const addCustDialog = {
       width: '70%',
-      height: '500px',
+      height: '600px',
       marginTop: '-300px',
       marginLeft: '-35%',
     };
